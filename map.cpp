@@ -9,7 +9,7 @@
 #include "player.h"
 
 
-map::map(int rows, int cols) {
+Map::Map(int rows, int cols) {
     this->rows = rows;
     this->cols = cols;
 
@@ -20,7 +20,7 @@ map::map(int rows, int cols) {
     }
 }
 
-map::~map() {
+Map::~Map() {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
             delete rooms[r][c];
@@ -28,41 +28,41 @@ map::~map() {
     }
 }
 
-void map::buildRooms() {
+void Map::buildRooms() {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
-            rooms[r][c] = new room("A dark dungeon room");
+            rooms[r][c] = new Room("A dark dungeon room");
         }
     }
 }
 
-void map::connectRooms() {
+void Map::connectRooms() {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
-            room* north = (r > 0) ? rooms[r - 1][c] : nullptr;
-            room* south = (r < rows - 1) ? rooms[r + 1][c] : nullptr;
-            room* east = (c < cols - 1) ? rooms[r][c + 1] : nullptr;
-            room* west = (c > 0) ? rooms[r][c - 1] : nullptr;
+            Room* north = (r > 0) ? rooms[r - 1][c] : nullptr;
+            Room* south = (r < rows - 1) ? rooms[r + 1][c] : nullptr;
+            Room* east = (c < cols - 1) ? rooms[r][c + 1] : nullptr;
+            Room* west = (c > 0) ? rooms[r][c - 1] : nullptr;
 
             rooms[r][c]-> setNeighbors(north, south, east, west);
         }
     }
 }
 
-void map::placeHazards() {
+void Map::placeHazards() {
     std::cout << "Place hazards stub." << std::endl;
 }
 
-void map::placeWeapons() {
+void Map::placeWeapons() {
     std::cout << "Place weapons stub." << std::endl;
 }
 
 
-room* map::getStartRoom() const {
+Room* Map::getStartRoom() const {
     return rooms[0][0];
 }
 
-void map::displayDebug(player *player) const {
+void Map::displayDebug(Player *player) const {
     std::cout << "Display debug stub." << std::endl;
 }
 

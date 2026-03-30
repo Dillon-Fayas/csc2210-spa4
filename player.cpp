@@ -7,7 +7,7 @@
 #include "room.h"
 #include "weapon.h"
 
-player::player() {
+Player::Player() {
     currentRoom = nullptr;
     weaponCount = 0;
     alive = true;
@@ -17,19 +17,19 @@ player::player() {
     }
 }
 
-player::~player() {
+Player::~Player() {
     for (int i = 0; i < 3; i++) {
         delete inventory[i];
     }
 }
 
-void player::move(room* destination) {
+void Player::move(char direction) {
     if (currentRoom == nullptr) {
         std::cout << "Player is not in a room." << std::endl;
         return;
     }
 
-    room* nextRoom = currentRoom->getNeighbor(direction);
+    Room* nextRoom = currentRoom->getNeighbor(direction);
 
     if (nextRoom != nullptr) {
         currentRoom = nextRoom;
@@ -39,27 +39,27 @@ void player::move(room* destination) {
     }
 }
 
-void player::pickUpWeapon() {
+void Player::pickUpWeapon() {
     std::cout << "Pick up weapon stub." << std::endl;
 }
 
 
-void player::useWeapon(int index, char direction) {
+void Player::useWeapon(int index, char direction) {
     std::cout << "Use weapon stub. Index: " << index << ", direction: " << direction << std::endl;
 }
 
-room* player::getCurrentRoom() const {
+Room* Player::getCurrentRoom() const {
     return currentRoom;
 }
 
-void player::setCurrentRoom(room* room) {
+void Player::setCurrentRoom(Room* room) {
     currentRoom = room;
 }
 
-bool player::isAlive() const {
+bool Player::isAlive() const {
     return alive;
 }
 
-void player::setAlive(bool status) {
+void Player::setAlive(bool status) {
     alive = status;
 }

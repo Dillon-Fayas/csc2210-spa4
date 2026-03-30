@@ -2,12 +2,41 @@
 // Created by spiro on 3/29/2026.
 //
 
-#ifndef CSC1120_SPA4_WEAPON_H
-#define CSC1120_SPA4_WEAPON_H
+#ifndef WEAPON_H
+#define WEAPON_H
 
+#include <string>
 
-class weapon {
+class Room;
+class Game;
+
+class Weapon {
+protected:
+    std::string name;
+
+public:
+    Weapon() = default;
+    virtual ~Weapon() = default;
+    virtual bool use(Room* startRoom, char direction, Game* game) = 0;
+    virtual std::string getName() const = 0;
 };
 
+class Spear : public Weapon {
+public:
+    Spear();
+    ~Spear() override = default;
 
-#endif //CSC1120_SPA4_WEAPON_H
+    bool use(Room* startRoom, char direction, Game* game) override;
+    std::string getName() const override;
+};
+
+class Fireball : public Weapon {
+public:
+    Fireball();
+    ~Fireball() override = default;
+
+    bool use(Room* startRoom, char direction, Game* game) override;
+    std::string getName() const override;
+};
+
+#endif //WEAPON_H

@@ -7,36 +7,36 @@
 
 #include <string>
 
-class hazard;
-class weapon;
+class Hazard;
+class Weapon;
 
-class room {
+class Room {
 private:
     std::string description;
-    room* north;
-    room* south;
-    room* east;
-    room* west;
-    hazard* hazard;
-    weapon* weapon;
+    Room* north;
+    Room* south;
+    Room* east;
+    Room* west;
+    Hazard* hazard;
+    Weapon* weapon;
     bool hasTreasure;
 
 public:
-    room(std::string description = "");
-    ~room();
+    Room(std::string description = "");
+    ~Room();
 
-    void setNeighbors(room* north, room* south, room* east, room* west);
-    room* getNeighbor(char direction) const;
+    void setNeighbors(Room* north, Room* south, Room* east, Room* west);
+    Room* getNeighbor(char direction) const;
 
     std::string getClues() const;
     bool hasHazard() const;
     bool hasWeapon() const;
 
-    hazard* getHazard() const;
-    weapon* getWeapon() const;
+    Hazard* getHazard() const;
+    Weapon* getWeapon() const;
 
-    void setHazard(hazard* hazard);
-    void setWeapon(weapon* weapon);
+    void setHazard(Hazard* hazard);
+    void setWeapon(Weapon* weapon);
 
 };
 

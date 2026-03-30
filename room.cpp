@@ -7,7 +7,7 @@
 #include "hazard.h"
 #include "weapon.h"
 
-room::room(std::string description) {
+Room::Room(std::string description) {
     this->description = description;
     north = nullptr;
     south = nullptr;
@@ -20,19 +20,19 @@ room::room(std::string description) {
 }
 
 
-room::~room() {
+Room::~Room() {
     delete hazard;
     delete weapon;
 }
 
-void room::setNeighbors(room* n, room* s, room* e, room* w) {
+void Room::setNeighbors(Room* n, Room* s, Room* e, Room* w) {
     north = n;
     south = s;
     east = e;
     west = w;
 }
 
-room* room::getNeighbor(char direction) const {
+Room* Room::getNeighbor(char direction) const {
     switch (direction) {
         case 'n': return north;
         case 's': return south;
@@ -42,30 +42,30 @@ room* room::getNeighbor(char direction) const {
     }
 }
 
-std::string room::getClues() const {
+std::string Room::getClues() const {
     return "Clue stub";
 }
 
-bool room::hasHazard() const {
+bool Room::hasHazard() const {
     return hazard != nullptr;
 }
 
-bool room::hasWeapon() const {
+bool Room::hasWeapon() const {
     return weapon != nullptr;
 }
 
-hazard* room::getHazard() const {
+Hazard* Room::getHazard() const {
     return hazard;
 }
 
-weapon* room::getWeapon() const {
+Weapon* Room::getWeapon() const {
     return weapon;
 }
 
-void room::setHazard(hazard* hazard) {
+void Room::setHazard(Hazard* hazard) {
     this->hazard = hazard;
 }
 
-void room::setWeapon(weapon* weapon) {
+void Room::setWeapon(Weapon* weapon) {
     this->weapon = weapon;
 }

@@ -2,22 +2,22 @@
 // Created by spiro on 3/29/2026.
 //
 
-#ifndef CSC1120_SPA4_GAME_H
-#define CSC1120_SPA4_GAME_H
+#ifndef GAME_H
+#define GAME_H
 #include "map.h"
 
-class map;
-class player;
+class Map;
+class Player;
 
-class game {
+class Game {
 private:
-    map *map;
-    player *player;
+    Map *map;
+    Player *player;
     bool debugMode;
 
 public:
-    game();
-    ~game();
+    Game();
+    ~Game();
 
     void start();
     void showWelcome();
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif //CSC1120_SPA4_GAME_H
+#endif //GAME_H

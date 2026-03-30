@@ -7,22 +7,22 @@
 #include "map.h"
 #include "player.h"
 
-game::game() {
+Game::Game() {
     map = nullptr;
     player = nullptr;
     debugMode = false;
 }
 
-game::~game() {
+Game::~Game() {
     delete player;
     delete map;
 }
 
-void game::start() {
+void Game::start() {
     std::cout << "Game Started." << std::endl;
 }
 
-void game::showWelcome() {
+void Game::showWelcome() {
     std::cout << "Welcome to The Dragon Game!\n\n";
 
     std::cout << "Deep beneath the earth lies a dangerous dungeon filled with deadly traps, mysterious magic, "
@@ -63,26 +63,26 @@ void game::showWelcome() {
 }
 
 
-void game::showHelp() {
+void Game::showHelp() {
     std::cout << "Help Menu\n";
 }
 
 
-void game::processTurn(char command) {
+void Game::processTurn(char command) {
     std::cout << "Processing command: " << command << std::endl;
 }
 
-void game::toggleDebugMode() {
+void Game::toggleDebugMode() {
     debugMode = !debugMode;
     std::cout << "Debug mode is now " << (debugMode ? "on" : "off") << std::endl;
 }
 
 
-bool game::checkGameOver() {
+bool Game::checkGameOver() {
     return false;
 }
 
-void game::printMapDebug() {
+void Game::printMapDebug() {
     if (map != nullptr && player != nullptr) {
         map->displayDebug(player);
     }

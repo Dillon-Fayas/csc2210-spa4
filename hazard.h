@@ -2,12 +2,50 @@
 // Created by spiro on 3/29/2026.
 //
 
-#ifndef CSC1120_SPA4_HAZARD_H
-#define CSC1120_SPA4_HAZARD_H
+#ifndef HAZARD_H
+#define HAZARD_H
 
+#include <string>
 
-class hazard {
+class Player;
+class Game;
+
+class Hazard {
+protected:
+    std::string name;
+
+public:
+    Hazard() = default;
+    virtual ~Hazard() = default;
+    virtual std::string getClue() const = 0;
+    virtual void trigger(Player* player, Game* game) = 0;
 };
 
+class Dragon : public Hazard {
+public:
+    Dragon();
+    ~Dragon() override = default;
 
-#endif //CSC1120_SPA4_HAZARD_H
+    std::string getClue() const override;
+    void trigger(Player* player, Game* game) override;
+};
+
+class Pit : public Hazard {
+public:
+    Pit();
+    ~Pit() override = default;
+
+    std::string getClue() const override;
+    void trigger(Player* player, Game* game) override;
+};
+
+class Bat : public Hazard {
+public:
+    Bat();
+    ~Bat() override = default;
+
+    std::string getClue() const override;
+    void trigger(Player* player, Game* game) override;
+};
+
+#endif //HAZARD_H

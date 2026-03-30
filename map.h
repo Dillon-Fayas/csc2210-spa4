@@ -2,31 +2,31 @@
 // Created by spiro on 3/29/2026.
 //
 
-#ifndef CSC1120_SPA4_MAP_H
-#define CSC1120_SPA4_MAP_H
+#ifndef MAP_H
+#define MAP_H
 
-class room;
-class player;
+class Room;
+class Player;
 
-class map {
+class Map {
 private:
-    room *rooms[5][5];
+    Room *rooms[5][5];
     int rows;
     int cols;
 
 public:
-    map(int rows = 5, int cols = 5);
-    ~map();
+    Map(int rows = 5, int cols = 5);
+    ~Map();
 
     void buildRooms();
     void connectRooms();
     void placeHazards();
     void placeWeapons();
-    room* getStartRoom() const;
-    void displayDebug(player *player) const;
+    Room* getStartRoom() const;
+    void displayDebug(Player *player) const;
 
 
 };
 
 
-#endif //CSC1120_SPA4_MAP_H
+#endif //MAP_H
