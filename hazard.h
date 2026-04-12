@@ -19,6 +19,7 @@ public:
     virtual ~Hazard() = default;
     virtual std::string getClue() const = 0;
     virtual void trigger(Player* player, Game* game) = 0;
+    std::string getName() const {return name;}
 };
 
 class Dragon : public Hazard {
@@ -39,10 +40,10 @@ public:
     void trigger(Player* player, Game* game) override;
 };
 
-class Bat : public Hazard {
+class Gargoyle : public Hazard {
 public:
-    Bat();
-    ~Bat() override = default;
+    Gargoyle();
+    ~Gargoyle() override = default;
 
     std::string getClue() const override;
     void trigger(Player* player, Game* game) override;

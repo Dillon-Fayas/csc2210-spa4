@@ -2,7 +2,7 @@
 
 int main() {
     Game game;
-    game.showWelcome();
+    game.start();
 
     return 0;
 }

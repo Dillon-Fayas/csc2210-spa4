@@ -14,6 +14,8 @@ private:
     int rows;
     int cols;
 
+    void randomEmptyCell(int& outr, int& outc) const;
+
 public:
     Map(int rows = 5, int cols = 5);
     ~Map();
@@ -22,8 +24,12 @@ public:
     void connectRooms();
     void placeHazards();
     void placeWeapons();
-    Room* getStartRoom() const;
+
+    Room* getRandomRoom() const;
+
+    void moveDragonToRandom();
     void displayDebug(Player *player) const;
+    void displayMap(Player* player) const;
 
 
 };

@@ -14,6 +14,11 @@ private:
     Map *map;
     Player *player;
     bool debugMode;
+    bool dragonSlain;
+
+    void showClues() const;
+    void checkCurrentRoom();
+    void handleWeaponThrow(int weaponType);
 
 public:
     Game();
@@ -26,6 +31,10 @@ public:
     void toggleDebugMode();
     bool checkGameOver();
     void printMapDebug();
+
+    Map* getMap() const;
+    Player* getPlayer() const;
+    void setDragonSlain(bool val);
 };
 
 

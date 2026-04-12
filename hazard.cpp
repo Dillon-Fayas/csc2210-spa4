@@ -35,16 +35,16 @@ void Pit::trigger(Player* player, Game* game) {
 }
 
 
-// Bat
+// Gargoyle
 
-Bat::Bat() {
-    name = "Bat";
+Gargoyle::Gargoyle() {
+    name = "Gargoyle";
 }
 
-std::string Bat::getClue() const {
+std::string Gargoyle::getClue() const {
     return "";
 }
 
-void Bat::trigger(Player* player, Game* game) {
+void Gargoyle::trigger(Player* player, Game* game) {
 
 }
