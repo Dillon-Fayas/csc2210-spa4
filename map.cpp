@@ -71,7 +71,7 @@ void Map::placeHazards() {
 
     for (int i = 0; i < 2; i++) {
         randomEmptyCell(r, c);
-        rooms[r][c]->setHazard(new Pit());
+        rooms[r][c]->setHazard(new QuickSand());
     }
 
     for (int i = 0; i < 2; i++) {
@@ -83,19 +83,19 @@ void Map::placeHazards() {
 void Map::placeWeapons() {
     int r, c;
 
-    // 3 spare javelins scattered around the dungeon
+    // 3 javelins around the dungeon
     for (int i = 0; i < 3; i++) {
         randomEmptyCell(r, c);
         rooms[r][c]->setWeapon(new Spear());
     }
 
-    // 2 fireball scrolls
+    // 2 fireballs
     for (int i = 0; i < 2; i++) {
         randomEmptyCell(r, c);
         rooms[r][c]->setWeapon(new Fireball());
     }
 
-    // 2 ice spike scrolls
+    // 2 ice spikes
     for (int i = 0; i < 2; i++) {
         randomEmptyCell(r, c);
         rooms[r][c]->setWeapon(new IceSpike());
@@ -191,7 +191,7 @@ void Map::displayDebug(Player *player) const {
             } else if (room->hasHazard()) {
                 std::string hName = room->getHazard()->getName();
                 if (hName == "Dragon") std::cout << "# ";
-                else if (hName == "Pit") std::cout << "@ ";
+                else if (hName == "Quick Sand") std::cout << "@ ";
                 else if (hName == "Gargoyle") std::cout << "! ";
                 else std::cout << "? ";
             } else if (room->hasWeapon()) {

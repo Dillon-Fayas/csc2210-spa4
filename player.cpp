@@ -41,7 +41,6 @@ void Player::move(char direction) {
             case 'e': std::cout << "East" << std::endl; break;
             case 'w': std::cout << "West" << std::endl; break;
         }
-        std::cout << ".\n";
     } else {
         std::cout << "You cannot move in that direction." << std::endl;
     }
@@ -67,7 +66,7 @@ void Player::pickUpWeapon() {
     if (weaponCount < 3) {
         inventory[weaponCount] = w;
         weaponCount++;
-        std::cout << "You pick up a " << w->getName() << " scroll.\n";
+        std::cout << "You pick up a " << w->getName() << ".\n";
         currentRoom->setWeapon(nullptr);
     }else {
         std::cout << "Your inventory is full. You leave the " << w->getName() << ".\n";

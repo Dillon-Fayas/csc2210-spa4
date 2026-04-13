@@ -56,7 +56,7 @@ void Game::start() {
         }
 
         player->printStatus();
-        std::cout << "Controls (n/s/e/w/j/f/i/h/m/q): ";
+        std::cout << "Controls (n/s/e/w/j/f/i/h/q): ";
 
         char command;
         std::cin >> command;
@@ -94,8 +94,8 @@ void Game::showWelcome() {
         << "loud flapping. Use these warnings carefully to figure out where danger is hiding.\n\n";
 
     std::cout << "You begin your journey with five javelins, which can be thrown into adjacent rooms. As you explore, "
-        << "you may also discover more javelins, fireball scrolls, and ice spike scrolls. Fireball and ice spike "
-        << "scrolls can travel through multiple rooms in one direction. However, be warned: if you miss with any "
+        << "you may also discover more javelins, fireballs, and ice spikes. Fireballs and ice spikes "
+        << "can travel through multiple rooms in one direction. However, be warned: if you miss with any "
         << "weapon, the dragon will flee and move to a random room.\n\n";
 
     std::cout << "Your mission is simple:\n";
@@ -110,10 +110,9 @@ void Game::showWelcome() {
     std::cout << "e = move east\n";
     std::cout << "w = move west\n";
     std::cout << "j = throw a javelin\n";
-    std::cout << "f = cast a fireball scroll\n";
-    std::cout << "i = cast an ice spike scroll\n";
+    std::cout << "f = cast a fireball\n";
+    std::cout << "i = cast an ice spike\n";
     std::cout << "h = show help\n";
-    std::cout << "m = toggle debug mode\n";
     std::cout << "q = quit the game\n";
 }
 
@@ -125,10 +124,9 @@ void Game::showHelp() {
               << "  e = move east\n"
               << "  w = move west\n"
               << "  j = throw a javelin (1 adjacent room)\n"
-              << "  f = cast a fireball scroll (travels multiple rooms)\n"
-              << "  i = cast an ice spike scroll (travels multiple rooms)\n"
+              << "  f = cast a fireball (travels multiple rooms)\n"
+              << "  i = cast an ice spike (travels multiple rooms)\n"
               << "  h = show this help menu\n"
-              << "  m = toggle debug mode (shows full map)\n"
               << "  q = quit the game\n";
 }
 
@@ -137,8 +135,6 @@ void Game::showClues() const {
     const char  dirs[]  = { 'n', 's', 'e', 'w' };
     bool        anyClue = false;
 
-    // Use a small set of seen clues to avoid printing the same message twice
-    // (e.g. two adjacent quicksand rooms would give the same clue)
     std::string seenClues[4];
     int seenCount = 0;
 
@@ -149,7 +145,6 @@ void Game::showClues() const {
         std::string clue = neighbor->getHazard()->getClue();
         if (clue.empty()) continue;
 
-        // Check for duplicate
         bool duplicate = false;
         for (int i = 0; i < seenCount; i++) {
             if (seenClues[i] == clue) { duplicate = true; break; }
@@ -205,7 +200,7 @@ void Game::handleWeaponThrow(int weaponType) {
     
     int slot = weaponType - 1;
     if (!player->hasInventoryWeapon(slot)) {
-        std::cout << "You don't have that scroll.\n";
+        std::cout << "You don't have that weapon.\n";
         return;
     }
     
@@ -213,15 +208,15 @@ void Game::handleWeaponThrow(int weaponType) {
     char dir;
     std::cin >> dir;
     
-    Weapon* scroll = player->getInventoryWeapon(slot);
-    bool hit = scroll->use(player->getCurrentRoom(), dir, this);
+    Weapon* weapon = player->getInventoryWeapon(slot);
+    bool hit = weapon->use(player->getCurrentRoom(), dir, this);
     player->removeInventoryWeapon(slot);
     
     if (hit) {
         dragonSlain = true;
-        std::cout << "The dragon is slain by your scroll!\n";
+        std::cout << "The dragon is slain by your weapon!\n";
     } else {
-        std::cout << "The scroll travels through empty rooms. A miss.\n";
+        std::cout << "The weapon travels through empty rooms. A miss.\n";
         map->moveDragonToRandom();
     }
 }

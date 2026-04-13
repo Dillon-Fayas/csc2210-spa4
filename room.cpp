@@ -19,7 +19,6 @@ Room::Room(std::string description) {
 
 }
 
-
 Room::~Room() {
     delete hazard;
     delete weapon;

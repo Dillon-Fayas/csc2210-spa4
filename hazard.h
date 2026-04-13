@@ -31,10 +31,10 @@ public:
     void trigger(Player* player, Game* game) override;
 };
 
-class Pit : public Hazard {
+class QuickSand : public Hazard {
 public:
-    Pit();
-    ~Pit() override = default;
+    QuickSand();
+    ~QuickSand() override = default;
 
     std::string getClue() const override;
     void trigger(Player* player, Game* game) override;

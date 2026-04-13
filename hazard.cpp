@@ -27,17 +27,17 @@ void Dragon::trigger(Player* player, Game* game) {
 
 
 
-// Pit
+// Quick sand
 
-Pit::Pit() {
-    name = "Pit";
+QuickSand::QuickSand() {
+    name = "Quick Sand";
 }
 
-std::string Pit::getClue() const {
+std::string QuickSand::getClue() const {
     return "You notice patches of fine sand drifting across the dungeon floor.";
 }
 
-void Pit::trigger(Player* player, Game* game) {
+void QuickSand::trigger(Player* player, Game* game) {
     std::cout << "The floor gives way beneath your feet — quicksand!\n";
     std::cout << "You struggle, but the sand pulls you under. You have perished.\n";
     player->setAlive(false);

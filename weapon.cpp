@@ -36,7 +36,6 @@ std::string Spear::getName() const {
 }
 
 bool Spear::use(Room* startRoom, char direction, Game* game) {
-    // maxSteps = 1 → only the immediately adjacent room
     return travelAndCheck(startRoom, direction, 1);
 }
 
@@ -52,13 +51,11 @@ std::string Fireball::getName() const {
 }
 
 bool Fireball::use(Room* startRoom, char direction, Game* game) {
-    // maxSteps = -1 → unlimited, travels the full corridor
     return travelAndCheck(startRoom, direction, -1);
 }
 
 
 // IceSpike
-
 
 IceSpike::IceSpike() {
     name = "IceSpike";
