@@ -39,4 +39,13 @@ public:
     std::string getName() const override;
 };
 
+class IceSpike : public Weapon {
+public:
+    IceSpike();
+    ~IceSpike() override = default;
+
+    bool use(Room* startRoom, char direction, Game* game) override;
+    std::string getName() const override;
+};
+
 #endif //WEAPON_H
